@@ -1,12 +1,9 @@
-{/* <div id="parent">
-    <div id="child">
-        <h1>this is h1 Tag</h1>
-    </div>
-</div> */}
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 
 const heading = React.createElement("div",{id:"parent"},
                 React.createElement("div",{id:"child"},
-                [React.createElement("h1",{},"This is h1 Tag"),
+                [React.createElement("h1",{},"This is h1111111112222 Tag"),
                 React.createElement("h2",{},"This is h2 Tag")] ))
 
 console.log(heading); 
