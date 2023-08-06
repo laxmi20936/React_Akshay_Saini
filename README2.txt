@@ -131,7 +131,158 @@ file watching algo. And the code we see on localhost:1234 is coming from dist fo
 App to be compatible for old browers:https://browersList.dev
 BrowersList: what all browers should your app be supported 
 
+--------------------------------------------------------------
+                      Assignment-2
+What is NPM?
+Npm manages all the packages.All the packages are hosted on npm, its like a 
+repo for packages.NPM is a package manager used to install, delete and update 
+Javascript  packages on your machine.
 
+What is parcel/Webpack? Why do we need it?
+Parcel or Webpack is the most important package known as bundler.
+These bundlers are used in modern web development to package and bundle Javascript
+and CSS files.These bundlers helps to optimize, compress and bundle our files to 
+make our application performant production ready application.
+
+What is .parcel-cache
+When we execute the command (npx parcel index.html) - .parcel-cache comes into 
+picture. When we change any file in our local and save it Parcel automatically caches
+the changes using File Watching Algo and HMR which makes our application fast.
+
+What is npx?
+NPX stands for node package eXecute.It allows the developer to execute the package 
+even without installing it
+
+What is difference between dependencies and devDependencies?
+devDependency: npm install -D parcel
+Dependency/normal dependency/production: npm install parcel
+
+normal/production Dependency is more optimised,compressed, minified and 
+variable names are also shortened and does not have development tools which 
+devDependencies have. 
+Production build also takes more time  as compared to development builds.
+---------------------------------------------------------------
+What is Tree Shaking?
+Example: When tree shakes, dried leaves which are no longer needed falls.
+Parcel also have this tree shaking algo where some random code or functions which are
+no longer used are removed, which makes app faster/ performant.
+In CSS, unused classes are also automatically removed.
+
+What is Hot Module Replacement?
+When we makes any changes in the file, Parcel automatically updates and refreshes the
+code in the browser - no page releod necessary and gives fast user experience.
+
+List down your favourite 5 superpower of Parcel and describe any 3 of them in your 
+own words
+Hot Module Replacement
+Tree Shaking Algo
+File Watching Algo
+Differential Bundling
+Diagnostic
+
+
+File Watching Algo: Parcel keeps a track of every change that we do in our file and
+when we save the changes Parcel builds the changes quickly.
+
+Differential Bundling: Helps to open our application in older browers as well
+
+Diagnostic: Parcel gives beautiful errors in the terminal and in browers 
+which is highlighted and pointing to the exact location where the error occured.
+Also gives the documentation link to read more about the error.
+---------------------------------------------------------------------
+What is .gitignore? What should we add and not add into it?
+.gitignore file is a text file which tells what all files/folder to ignore in a 
+project.Files mentioned in gitignore will be ignored by the git repo and 
+will  not be pushed in production.
+
+What is the difference between package.json aned package-lock.json
+Package.json keeps the approximate version of the package installed in our project.
+Can have tilde or caret in front of the version.
+Package-lock.json keeps the exact version of the package installed and also 
+keeps track of the version of transitive depndency.
+
+Why should I not modify 'package-lock.json'?
+It serves as a lockfile and is intended to keep track of the exact versions of the 
+dependencies that are installed in our project.The purpose of package-lock.json is 
+to ensure that the project's dependencies remain consistent across different
+environment and installations.
+
+What is node_modules? Is it a good idea to push node_modules on git?
+node_modules is like a collection/database of the package/dependencies and also 
+their transitive dependencies to build or run the project.
+We should not push node_modules on git because node_modules can be regenerated 
+on dev servers using package.json and package-lock.json.
+
+What is dist folder?
+When we execute the package --> dist folder comes into picture.The dist folder 
+contains the minimized version of the source code.  
+All the js,css file in the project is compressed , minified,bundled  and put 
+inside the dist folder in single javascript and css file(minified version)
+
+What is browersList?
+BrowersList tells on what all browers our application is supported.
+Code emitted will be compatible with the browers specified
+
+What is ^caret and ~tilde?
+Caret will install the minor update.
+Tilda will install the major update.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                                                                     
 
 
 
