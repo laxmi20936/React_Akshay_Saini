@@ -1,0 +1,4 @@
+Prettier
+Bracket Pair colourizer
+ES lint 
+better comments

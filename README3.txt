@@ -108,9 +108,14 @@ in JSX. Suppose attackers gets some access to run some piece of Javascript in yo
 browsers.APi is such that it is stealing our local storage, cookies, session storage
 PC data etc.These attack is known as cross site scripting.
 
+
 JSX takes care of the injection attack. Even if the api sends some malicious data
-JSX will escape it.Assume that JSX sanitise the data wrapped in {}.
+JSX will escape it(cross site scripting attack).
+Assume that JSX sanitise the data wrapped in {}.
 JSx prevents cross site sripting attacks.
+Feel free to write any piece of code in Jsx bcoz JSX is such powerful.
+Nobody can do malicious attack i.e execute JavaScript with malicious data inside {}.
+----------------
 
 -------------------------------------------------------------
 What are the ways to call any component?
