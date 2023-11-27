@@ -1,13 +1,4 @@
-// Head
-//    -Logo 
-//    -Navigator items
-// Body 
-//   -Search
-//   -Restaurant Container
-//         -Restaurant card
-// Footer
-//     -copyright
-const restaurants= [
+const restaurantsList= [
     {
       "info": {
         "id": "25553",
@@ -2322,70 +2313,4 @@ const restaurants= [
     }
   ]
 
-
-const Header = () => {
-    return(
-        <div className="header">
-            <div className="logo-container">
-                <img src="https://www.creativefabrica.com/wp-content/uploads/2022/03/07/Restaurant-yummy-food-logo-design-Graphics-26620420-2-580x387.png"
-                alt="logo" />
-            </div>
-            <div className="nav-items">
-                <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Cart</li>
-                    <li>Contact</li>
-                </ul>
-            </div>
-        </div>
-    )
-}
-const RestaurantCard = (props) => {
-    // console.log(resObj,props)
-    const {resObj} = props
-    console.log(resObj)
-      return(
-        <div className="res-card">
-            <img className='res-image' src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/"+ 
-            resObj.cloudinaryImageId} alt="res-item"/>
-            <h4>{resObj.name}</h4>
-            <h4>{resObj.cuisines.join(', ')}</h4>
-            {/* <h4>{resObj.cuisines.toString()}</h4> */}
-            <h4>{resObj.avgRating} stars</h4>
-            <h4>{resObj.costForTwo}</h4>
-            <h4>{resObj.sla.deliveryTime} minutes</h4>
-        </div>
-      )
-}
-
-
-const Body = () =>{
-    return(
-        <div className='body'>
-            <div className="search">
-                <input type="text"/>
-            </div>
-            <div className="res-container">
-                {restaurants.map(resItem => <RestaurantCard key={resItem.info.id}resObj={resItem.info}/>)}
-                {/* <RestaurantCard resObj={restaurants[0].info}/>
-                <RestaurantCard resObj={restaurants[1].info}/>
-                <RestaurantCard resObj={restaurants[2].info}/>
-                <RestaurantCard resObj={restaurants[3].info}/>
-                <RestaurantCard resObj={restaurants[4].info}/> */}
-                   
-            </div>
-        </div>
-    )
-}
-const App = () =>{
-    return (
-        <div className="app">
-            <Header/>
-            <Body/>
-        </div>
-        
-    )
-}
-
-export default App;
+export default restaurantsList
