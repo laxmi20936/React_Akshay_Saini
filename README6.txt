@@ -76,5 +76,17 @@ React fibre (new reconciliation algo which finds the diffence btw the previous a
 new Virtual DOM and updates the DOM only when required and only that portion is 
 updated) which make efficent dom manipulations)
 
+=======================================================================
+6.1
+make an api call 
+
+6.2
+corsproxy.io(When we dont want to enable the extension OR the user doesn't have
+ CORS policy).
+copy and paste it front of api call .
+Now we are not calling swiggy's API directly it will first go to corsproxy.io and cors 
+internally making an API call to swiggy and getting you the data.
+
+cors proxy is now acting as a proxy calling the Api for u and getting the data.
 
 

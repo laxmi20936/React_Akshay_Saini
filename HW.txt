@@ -1,0 +1,8 @@
+optional changing
+rest and spread operator
+araray and obj destructure
+
+video cors => youtube video
+
+vieo 6.1 ===> last HW => when we scroll up  do post request of "update" API
+"update API" gives more list of restaurants
