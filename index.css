@@ -5,6 +5,9 @@
     border: 1px solid black;
     align-items: center;
 }
+.body{
+    margin-top:20px;
+}
 
 .logo-container img{
     width:160px;
@@ -41,4 +44,20 @@
 }
 .res-image{
     width:100%
+}
+
+.shimmer-cont{
+ display:flex;
+ flex-wrap: wrap;
+ margin:10px auto;
+ width:75%;
+}
+.card-shimmer{
+    background-color: #f0f0f0;
+    height:280px;
+    width: 200px;
+    /* border:1px solid black; */
+    margin: 10px;
+
+    /* weight:200px; */
 }

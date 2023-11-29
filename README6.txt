@@ -10,8 +10,8 @@ DB connectivity.
 SMS code(notification)
 
 if we have to make single change (lets says changing color of the button) then we to
-buuild the whole project. We have to compile the whole project and then deploy.
-Here the whole big app is wriiten in Java 
+build the whole project. We have to compile the whole project and then deploy.
+Here the whole big app is written in Java 
 ======================================================
 Microservice- Here we have different services.These are small services(micro services)/app
 and all are combined to form a big app.All these micro services/app talk to each other
@@ -45,14 +45,14 @@ same domain name(same URL)
                 wait 500ms
 
 This is not a good approach because as soon as the pg loads we are making API call 
-which is takinf=g some time and then Rendering the page
+which is taking some time and then Rendering the page
 ===========================================================
 2nd: loads pg => Render => API call => Re-render the page
 
-This is a good approach abd gives better UX because when the page loads we are 
+This is a good approach and gives better UX because when the page loads we are 
 rendering with whatever data we have and then we are making an API call.
 When we get the data from API  then we re-render the page.
-Here we are rendering twice.
+Here we are re-rendering twice.
 React have fast render cycle( 2 renders => not an issue)
 ================================================================================================
 CORS: calling swiggy's API from local host has blocked by cors policy.

@@ -1,11 +1,30 @@
 import RestaurantCard from "./RestaurantCard";
-import restaurantsList from "../utils/mockData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
-  const [allRes, setAllRes] = useState(restaurantsList);
-  const [res, setRes] = useState(restaurantsList);
+  const [allRes, setAllRes] = useState([]);
+  const [res, setRes] = useState([]);
   const [ip, setIp] = useState();
+
+  useEffect(() => {
+    fetchData();
+    console.log("oo");
+  }, []);
+
+  const fetchData = async () => {
+    const a = await fetch(
+      "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=20.362526&lng=85.825302&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+
+    const jsonValue = await a.json();
+    console.log(jsonValue);
+    setRes(
+      jsonValue?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setAllRes(
+      jsonValue?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+  };
 
   const changeHandler = (e) => {
     setIp(e.target.value);
@@ -13,12 +32,17 @@ const Body = () => {
 
   const searchHandler = () => {
     const searchFiltered = allRes.filter((x) =>
-      x.info.name.toLocaleLowerCase().includes(ip));
+      x.info.name.toLocaleLowerCase().includes(ip.toLowerCase())
+    );
     console.log(searchFiltered);
     setRes(searchFiltered);
   };
 
-  return (
+  
+
+  return allRes.length === 0 ? (
+    <Shimmer/>
+  ) : (
     <div className="body">
       <div className="search">
         <input
