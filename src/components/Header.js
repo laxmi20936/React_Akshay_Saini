@@ -1,22 +1,41 @@
-import {LOGO} from '../utils/constants'
-
+import { LOGO } from "../utils/constants";
+import { useState } from "react";
 const Header = () => {
-    return(
-        <div className="header">
-            <div className="logo-container">
-                <img src={LOGO}
-                alt="logo" />
-            </div>
-            <div className="nav-items">
-                <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Cart</li>
-                    <li>Contact</li>
-                </ul>
-            </div>
-        </div>
-    )
-}
+  const [login, setLogin] = useState("Login");
+  const [loggedIn, setLoggedIn] = useState(true);
 
-export default Header
+  const loginHandler = () => {
+    //    if(login === "Login"){
+    //       setLogin("Logout")
+    //    }else{
+    //     setLogin("Login")
+    //    }
+    login === "Login" ? setLogin("Logout") : setLogin("Login");
+  };
+
+  return (
+    <div className="header">
+      <div className="logo-container">
+        <img src={LOGO} alt="logo" />
+      </div>
+      <div className="nav-items">
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Cart</li>
+          <li>Contact</li>
+          {/* <button onClick={loginHandler}>{login}</button> */}
+
+          {/* OR */}
+          {loggedIn ? (
+            <button onClick={() => setLoggedIn(false)}>Login</button>
+          ) : (
+            <button onClick={() => setLoggedIn(true)}>Logout</button>
+          )}
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default Header;

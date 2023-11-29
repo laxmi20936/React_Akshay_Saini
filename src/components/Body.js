@@ -20,9 +20,12 @@ const Body = () => {
     const jsonValue = await a.json();
     console.log(jsonValue);
     setRes(
-      jsonValue?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+      jsonValue?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
     setAllRes(
-      jsonValue?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      jsonValue?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
     );
   };
 
@@ -38,10 +41,8 @@ const Body = () => {
     setRes(searchFiltered);
   };
 
-  
-
-  return allRes.length === 0 ? (
-    <Shimmer/>
+  return allRes?.length === 0 ? (
+    <Shimmer />
   ) : (
     <div className="body">
       <div className="search">
