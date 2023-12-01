@@ -61,3 +61,14 @@
 
     /* weight:200px; */
 }
+.offers{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.offer-card{
+  background-color: #f0f0f0;
+  border: 1px solid gray;
+  margin:10px;
+  padding:10px
+}

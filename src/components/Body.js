@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import {Link} from 'react-router-dom'
 
 const Body = () => {
   const [allRes, setAllRes] = useState([]);
@@ -13,6 +14,7 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
+   try {
     const a = await fetch(
       "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=20.362526&lng=85.825302&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
@@ -27,6 +29,10 @@ const Body = () => {
       jsonValue?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
+    
+   } catch (error) {
+    console.log(error.message)
+   }
   };
 
   const changeHandler = (e) => {
@@ -65,7 +71,9 @@ const Body = () => {
       </div>
       <div className="res-container">
         {res?.map((resItem) => (
-          <RestaurantCard key={resItem?.info?.id} resObj={resItem?.info} />
+          <Link to={"/restaurant/" + resItem?.info?.id} key={resItem?.info?.id}>
+            <RestaurantCard  resObj={resItem?.info} />
+          </Link>
         ))}
       </div>
     </div>

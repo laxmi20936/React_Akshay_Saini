@@ -25,6 +25,7 @@ RouterProvider (router)=> Provides router configuration to the app
 errorElement (useRouteError)
 Nested route(children)
 In outlet all the children will go based on the route.
+usrParams --> hook
 
 IMP: Don't use anchor tag to navigate to the next page because it
 will reload the whole page.
@@ -58,3 +59,4 @@ aboutUs and all other nav components are loaded.
 While navigating to AboutUs it just loads aboutUs page , it will not make any network call
 
 ===========================Dynamic Routing ================================
+useParams hook
