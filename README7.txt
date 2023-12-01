@@ -171,4 +171,4 @@ SPAs (Single Page Applications) often use client-side routing to provide a more 
 Changes in the application state and UI are handled without requiring a round-trip to the server.
 
 Server-Side Routing:
-Traditional web applications may have a less dynamic feel as each navigation involves a full page reload.
+Traditional web applications may have a less dynamic feel as each navigation involves a full page reload..
