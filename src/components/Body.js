@@ -7,6 +7,8 @@ const Body = () => {
   const [allRes, setAllRes] = useState([]);
   const [res, setRes] = useState([]);
   const [ip, setIp] = useState();
+  const [onlineStatus, setOnlineStatus] = useState(true)
+  console.log(res)
 
   useEffect(() => {
     fetchData();
@@ -20,7 +22,7 @@ const Body = () => {
     );
 
     const jsonValue = await a.json();
-    console.log(jsonValue);
+    // console.log(jsonValue);
     setRes(
       jsonValue?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
@@ -35,6 +37,17 @@ const Body = () => {
    }
   };
 
+  useEffect(()=>{
+      window.addEventListener("online" ,() => {
+          setOnlineStatus(true)
+      })
+      
+      window.addEventListener("offline" ,() => {
+        setOnlineStatus(false)
+      })
+
+  },[])
+
   const changeHandler = (e) => {
     setIp(e.target.value);
   };
@@ -46,7 +59,10 @@ const Body = () => {
     console.log(searchFiltered);
     setRes(searchFiltered);
   };
-
+  
+  if(onlineStatus === false){
+    return <h1>Offine</h1>
+  }
   return allRes?.length === 0 ? (
     <Shimmer />
   ) : (
@@ -62,7 +78,7 @@ const Body = () => {
         <button
           onClick={() => {
             const filteredRes = allRes.filter((x) => x.info.avgRating > 4);
-            console.log(filteredRes);
+            // console.log(filteredRes);
             setRes(filteredRes);
           }}
         >

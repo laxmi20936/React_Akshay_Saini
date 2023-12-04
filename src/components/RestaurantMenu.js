@@ -1,27 +1,15 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import useRestaurantMenu from "../utils/useRestaurantMenu"
 
 const RestaurantMenu = () => {
   const { resID } = useParams();
   // console.log(resID);
-  const [resMenu, setResMenu] = useState([]);
-  console.log(resMenu);
+  console.log("A");
 
-  useEffect(() => {
-    const data = fetch(
-      "https://corsproxy.io/?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=20.362526&lng=85.825302&restaurantId=" + resID + "&catalog_qa=undefined&submitAction=ENTER"
-    );
-    data
-      .then((data) => {
-        return data.json();
-      }).catch((err) => console.log(err))
-      .then((value) => {
-        console.log(value);
-        setResMenu(value?.data?.cards);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  const resMenu = useRestaurantMenu(resID)
+  console.log("B ", resMenu);
+
 
   if (resMenu?.length === 0) {
     return <Shimmer />;
@@ -34,7 +22,7 @@ const RestaurantMenu = () => {
 
   const { title,itemCards } =
     resMenu[2]?.groupedCard?.cardGroupMap.REGULAR.cards[1].card.card;
-  console.log(itemCards);
+  // console.log(itemCards);
 
   return (
     <div className="res-menu-container">
