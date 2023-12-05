@@ -54,4 +54,5 @@ more optimised, light weight
 
 We can use lazy loading when my app grows
 
-To reduce the bundle size we do code splitting/lazy loading
+To reduce the bundle size we do code splitting/lazy loading.
+
