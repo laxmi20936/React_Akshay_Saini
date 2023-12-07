@@ -56,3 +56,8 @@ We can use lazy loading when my app grows
 
 To reduce the bundle size we do code splitting/lazy loading.
 
+Drawback of SAP:
+When we dont use cleanup function and nav to next page the timer will still be runing.
+When we dont chunk our code it will take take time to initally load our page.With 
+SPAs, initial loading lasts longer because the JS volume is significantly bigger
+

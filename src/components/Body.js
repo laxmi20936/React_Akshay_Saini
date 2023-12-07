@@ -2,19 +2,24 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import {Link} from 'react-router-dom'
+import useOnline from "../utils/useOnline";
 
 const Body = () => {
+  console.log("Body");
   const [allRes, setAllRes] = useState([]);
   const [res, setRes] = useState([]);
   const [ip, setIp] = useState();
-  const [onlineStatus, setOnlineStatus] = useState(true)
   console.log(res)
+  
+  const onlineStatus = useOnline();
 
   useEffect(() => {
+    // console.log("useEffect one called");
     fetchData();
     console.log("oo");
   }, []);
-
+  
+  
   const fetchData = async () => {
    try {
     const a = await fetch(
@@ -22,7 +27,7 @@ const Body = () => {
     );
 
     const jsonValue = await a.json();
-    // console.log(jsonValue);
+    console.log(jsonValue);
     setRes(
       jsonValue?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
@@ -37,16 +42,6 @@ const Body = () => {
    }
   };
 
-  useEffect(()=>{
-      window.addEventListener("online" ,() => {
-          setOnlineStatus(true)
-      })
-      
-      window.addEventListener("offline" ,() => {
-        setOnlineStatus(false)
-      })
-
-  },[])
 
   const changeHandler = (e) => {
     setIp(e.target.value);
@@ -63,6 +58,7 @@ const Body = () => {
   if(onlineStatus === false){
     return <h1>Offine</h1>
   }
+  
   return allRes?.length === 0 ? (
     <Shimmer />
   ) : (
