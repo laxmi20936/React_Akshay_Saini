@@ -62,16 +62,17 @@ const Body = () => {
   return allRes?.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="search">
+    <div className="body mt-4">
+      <div className="mb-4 px-28">
         <input
+          className ="border-solid border-neutral-950 border-2 p-1"
           type="text"
           placeholder="Search here"
           onChange={(e) => changeHandler(e)}
         />
-        <button onClick={() => searchHandler()}>Search</button>
-        <br />
+        <button className="m-6 px-4 py-2 bg-green-300 rounded-sm" onClick={() => searchHandler()}>Search</button>
         <button
+        className="ml-3 px-4 py-2 bg-green-300 rounded-sm"
           onClick={() => {
             const filteredRes = allRes.filter((x) => x.info.avgRating > 4);
             // console.log(filteredRes);
@@ -81,7 +82,7 @@ const Body = () => {
           Top rated restaurant
         </button>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap mx-auto w-[90%]">
         {res?.map((resItem) => (
           <Link to={"/restaurant/" + resItem?.info?.id} key={resItem?.info?.id}>
             <RestaurantCard  resObj={resItem?.info} />

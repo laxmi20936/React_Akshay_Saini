@@ -4,3 +4,6 @@ ctrl + shift + F => to search
 alt + shift + down => upar ka text niche copy
 shift that side => Tab key
 shift this side <= Tab + shift
+
+
+tailwind css vs code extension -Tailwind intellisense

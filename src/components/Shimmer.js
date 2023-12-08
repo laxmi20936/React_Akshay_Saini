@@ -3,8 +3,8 @@ const Shimmer = () => {
     arr.fill("")
     console.log(arr)
     return(
-        <div className="shimmer-cont">
-            {arr.map((x,i) => <div key={i} className="card-shimmer"></div>)}
+        <div className="flex flex-wrap m-2">
+            {arr.map((x,i) => <div key={i} className="bg-slate-300 m-2 w-48 h-72"></div>)}
         </div>
     )
 }

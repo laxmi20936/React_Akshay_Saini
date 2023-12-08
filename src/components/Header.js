@@ -21,19 +21,19 @@ const Header = () => {
   };
   
   return (
-    <div className="header">
-      <div className="logo-container">
+    <div className="flex justify-between bg-yellow-200 sm:bg-red-500 lg:bg-gray-200">
+      <div className="logo-container w-40">
         <img src={LOGO} alt="logo" />
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>
+      <div className="nav-items flex items-center">
+        <ul className="flex p-4 m-4">
+          <li className="m-4">
             Online status {onlineStatus ? "✔": "🔴"}
           </li>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to ="/contact">Contact</Link></li>
-          <li>Cart</li>
+          <li className="m-4"><Link to="/">Home</Link></li>
+          <li className="m-4"><Link to="/about">About</Link></li>
+          <li className="m-4"><Link to ="/contact">Contact</Link></li>
+          <li className="m-4">Cart</li>
           {/* <button onClick={loginHandler}>{login}</button> */}
 
           {/* OR */}
