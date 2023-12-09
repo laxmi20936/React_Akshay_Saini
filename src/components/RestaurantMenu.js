@@ -3,6 +3,7 @@ import Shimmer from "./Shimmer";
 import useRestaurantMenu from "../utils/useRestaurantMenu"
 
 const RestaurantMenu = () => {
+  console.log("ResMenu");
   const { resID } = useParams();
   // console.log(resID);
   console.log("A");

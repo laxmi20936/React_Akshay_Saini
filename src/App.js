@@ -6,6 +6,7 @@ import About from "./components/About";
 // import Contact from "./components/Contact";
 import ErrorPage from "./components/ErrorPage";
 import RestaurantMenu from "./components/RestaurantMenu";
+import Challenges from "./components/Challenges";
 const  Contact = lazy(() => import("./components/Contact"));
 
 const App = () => {
@@ -38,6 +39,10 @@ export const appLayout = createBrowserRouter([
       {
         path:"/restaurant/:resID",
         element:<RestaurantMenu/>
+      },
+      {
+        path:"/challenges",
+        element:<Challenges/>
       }
     ]
   }

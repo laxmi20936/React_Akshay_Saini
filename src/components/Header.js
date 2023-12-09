@@ -42,6 +42,7 @@ const Header = () => {
           ) : (
             <button onClick={() => setLoggedIn(true)}>Logout</button>
           )}
+          <Link to="/challenges"><li>Challenges</li></Link>
         </ul>
       </div>
     </div>
