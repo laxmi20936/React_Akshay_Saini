@@ -1,16 +1,21 @@
 import RestaurantCard from "./RestaurantCard";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Shimmer from "./Shimmer";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
+import { userData } from "../utils/UserContext";
 
 const Body = () => {
   console.log("Body");
+
   const [allRes, setAllRes] = useState([]);
   const [res, setRes] = useState([]);
-  const [ip, setIp] = useState();
-  console.log(res)
-  
+  const [ip, setIp] = useState("");
+  const [newIp, setNewIp] = useState("");
+  const data = useContext(userData);
+  console.log(data);
+  console.log(res);
+
   const onlineStatus = useOnline();
 
   useEffect(() => {
@@ -18,30 +23,27 @@ const Body = () => {
     fetchData();
     console.log("oo");
   }, []);
-  
-  
+
   const fetchData = async () => {
-   try {
-    const a = await fetch(
-      "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=20.362526&lng=85.825302&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+    try {
+      const a = await fetch(
+        "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=20.362526&lng=85.825302&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      );
 
-    const jsonValue = await a.json();
-    console.log(jsonValue);
-    setRes(
-      jsonValue?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-    setAllRes(
-      jsonValue?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-    
-   } catch (error) {
-    console.log(error.message)
-   }
+      const jsonValue = await a.json();
+      console.log(jsonValue);
+      setRes(
+        jsonValue?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+      setAllRes(
+        jsonValue?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+    } catch (error) {
+      console.log(error.message);
+    }
   };
-
 
   const changeHandler = (e) => {
     setIp(e.target.value);
@@ -54,38 +56,53 @@ const Body = () => {
     console.log(searchFiltered);
     setRes(searchFiltered);
   };
-  
-  if(onlineStatus === false){
-    return <h1>Offine</h1>
+
+  if (onlineStatus === false) {
+    return <h1>Offine</h1>;
   }
-  
+
   return allRes?.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body mt-4">
       <div className="mb-4 px-28">
         <input
-          className ="border-solid border-neutral-950 border-2 p-1"
+          className="border-solid border-neutral-950 border-2 p-1"
           type="text"
           placeholder="Search here"
           onChange={(e) => changeHandler(e)}
         />
-        <button className="m-6 px-4 py-2 bg-green-300 rounded-sm" onClick={() => searchHandler()}>Search</button>
         <button
-        className="ml-3 px-4 py-2 bg-green-300 rounded-sm"
+          className="m-6 px-4 py-2 bg-green-300 rounded-sm"
+          onClick={() => searchHandler()}
+        >
+          Search
+        </button>
+        <button
+          className="ml-3 px-4 py-2 bg-green-300 rounded-sm"
           onClick={() => {
             const filteredRes = allRes.filter((x) => x.info.avgRating > 4);
             // console.log(filteredRes);
             setRes(filteredRes);
           }}
         >
-          Top rated restaurant
+          {"Top rated restaurant"}
         </button>
+        <input
+          className="border-solid border-neutral-950 border-2 p-1 mx-3"
+          onChange={(e) => {
+            // setNewIp(e.target.value);
+            data.setUserData1({...data.loggedUser, name:e.target.value})
+          }}
+          // value={setIp}
+        />
+        {data?.loggedUser?.name}
+
       </div>
       <div className="flex flex-wrap mx-auto w-[90%]">
         {res?.map((resItem) => (
           <Link to={"/restaurant/" + resItem?.info?.id} key={resItem?.info?.id}>
-            <RestaurantCard  resObj={resItem?.info} />
+            <RestaurantCard resObj={resItem?.info} />
           </Link>
         ))}
       </div>
