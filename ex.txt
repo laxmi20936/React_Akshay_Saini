@@ -7,3 +7,12 @@ shift this side <= Tab + shift
 
 
 tailwind css vs code extension -Tailwind intellisense
+
+Redux devtools
+
+When is Redux used:
+Used for very large application when managing data between components becomes very
+difficult
+
+Vanilla Redux: Middleware and Redux thunk for fetching data
+Redux Tootkit :  RTK Query
