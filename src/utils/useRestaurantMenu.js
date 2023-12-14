@@ -15,7 +15,7 @@ const useRestaurantMenu = (resID) => {
         return data.json();
       }).catch((err) => console.log(err))
       .then((value) => {
-        // console.log(value);
+        console.log("ResMenu", value,);
         setResMenu(value?.data?.cards);
       })
       .catch((err) => console.log(err));
