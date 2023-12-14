@@ -4,7 +4,8 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import { userData } from "../utils/UserContext";
-
+import RestaurantCard from "./RestaurantCard";
+import { withRestaurantOffer } from "./RestaurantCard";
 const Body = () => {
   console.log("Body");
 
@@ -12,6 +13,9 @@ const Body = () => {
   const [res, setRes] = useState([]);
   const [ip, setIp] = useState("");
   const [newIp, setNewIp] = useState("");
+  const ResOfferLabel = withRestaurantOffer(RestaurantCard);
+  // console.log(ResOfferLabel)
+
   const data = useContext(userData);
   console.log(data);
   console.log(res);
@@ -27,11 +31,11 @@ const Body = () => {
   const fetchData = async () => {
     try {
       const a = await fetch(
-        "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=20.362526&lng=85.825302&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+        "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
 
       const jsonValue = await a.json();
-      console.log(jsonValue);
+      console.log("AA", jsonValue);
       setRes(
         jsonValue?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants
@@ -92,17 +96,22 @@ const Body = () => {
           className="border-solid border-neutral-950 border-2 p-1 mx-3"
           onChange={(e) => {
             // setNewIp(e.target.value);
-            data.setUserData1({...data.loggedUser, name:e.target.value})
+            data.setUserData1({ ...data.loggedUser, name: e.target.value });
           }}
           // value={setIp}
         />
         {data?.loggedUser?.name}
-
       </div>
-      <div className="flex flex-wrap mx-auto w-[90%]">
+      <div className="flex flex-wrap mx-auto w-[73%]">
         {res?.map((resItem) => (
           <Link to={"/restaurant/" + resItem?.info?.id} key={resItem?.info?.id}>
-            <RestaurantCard resObj={resItem?.info} />
+            {resItem?.info?.aggregatedDiscountInfoV3?.header ||
+            resItem?.info?.aggregatedDiscountInfoV3?.subHeader ||
+            resItem?.info?.aggregatedDiscountInfoV3?.subHeader ? (
+              <ResOfferLabel resObj={resItem?.info} />
+            ) : (
+              <RestaurantCard resObj={resItem?.info} />
+            )}
           </Link>
         ))}
       </div>
