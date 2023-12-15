@@ -2,8 +2,10 @@ import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
-
+import { useState } from "react";
 const RestaurantMenu = () => {
+  const [indexData, setIndexData] = useState(null);
+
   const { resID } = useParams();
   // console.log(resID);
   console.log("A");
@@ -66,20 +68,15 @@ const RestaurantMenu = () => {
         ))}
       </div>
       <div className="all-category mt-6">
-        {filterCategory.map((items) => (
-          <RestaurantCategory {...items.card.card} />
+        {filterCategory.map((items, index) => (
+          <RestaurantCategory
+            key={items?.card?.card?.title}
+            {...items.card.card}
+            index={index}
+            setIndexData={setIndexData}
+            indexData={indexData}
+          />
         ))}
-
-        {/* {filterCategory[0]?.card?.card?.title}
-        {filterCategory[1]?.card?.card?.title}
-        {filterCategory[2]?.card?.card?.title}
-        {filterCategory[3]?.card?.card?.title} */}
-        {/* {filterCategory[0].card.card} */}
-
-        {/* <h3>{title}</h3>
-        {itemCards?.map((item) => (
-          <div key={item?.card?.info?.id}>{item?.card?.info?.name}</div>
-        ))} */}
       </div>
     </div>
   );

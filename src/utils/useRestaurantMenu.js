@@ -8,7 +8,7 @@ const useRestaurantMenu = (resID) => {
    useEffect(() => {
     console.log("useEffect called");
     const data = fetch(
-      "https://corsproxy.io/?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=20.362526&lng=85.825302&restaurantId=" + resID + "&catalog_qa=undefined&submitAction=ENTER"
+      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=20.362526&lng=85.825302&restaurantId=" + resID + "&catalog_qa=undefined&submitAction=ENTER"
     );
     data
       .then((data) => {
