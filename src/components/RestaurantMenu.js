@@ -4,8 +4,8 @@ import useRestaurantMenu from "../utils/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
 import { useState } from "react";
 const RestaurantMenu = () => {
-  const [indexData, setIndexData] = useState(null);
-
+  const [indexData, setIndexData] = useState(0);
+  console.log("debugA", indexData)
   const { resID } = useParams();
   // console.log(resID);
   console.log("A");

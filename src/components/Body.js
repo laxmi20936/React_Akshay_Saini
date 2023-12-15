@@ -30,7 +30,7 @@ const Body = () => {
 
   const fetchData = async () => {
     try {
-      const a = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=20.362526&lng=85.825302&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING')
+      const a = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING')
 
       const jsonValue = await a.json();
       console.log("AA", jsonValue);

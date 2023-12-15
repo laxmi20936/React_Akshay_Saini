@@ -8,7 +8,7 @@ const useRestaurantMenu = (resID) => {
    useEffect(() => {
     console.log("useEffect called");
     const data = fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=20.362526&lng=85.825302&restaurantId=" + resID + "&catalog_qa=undefined&submitAction=ENTER"
+      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=" + resID + "&catalog_qa=undefined&submitAction=ENTER"
     );
     data
       .then((data) => {
