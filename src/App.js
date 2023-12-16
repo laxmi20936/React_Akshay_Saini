@@ -10,6 +10,9 @@ import Challenges from "./components/Challenges";
 // import { userData } from "./utils/UserContext";
 import { userData } from "./utils/UserContext";
 const Contact = lazy(() => import("./components/Contact"));
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 const App = () => {
   const [userData1, setUserData1] = useState(null);
@@ -17,22 +20,24 @@ const App = () => {
     setUserData1({
       name: "",
       age: 899,
-      height:"90cm"
+      height: "90cm",
     });
   }, []);
 
   return (
-    <userData.Provider
-      value={{
-        loggedUser: userData1,
-        setUserData1
-      }}
-    >
-      <div className="app">
-        <Header />
-        <Outlet />
-      </div>
-    </userData.Provider>
+    <Provider store={appStore}>
+      <userData.Provider
+        value={{
+          loggedUser: userData1,
+          setUserData1,
+        }}
+      >
+        <div className="app">
+          <Header />
+          <Outlet />
+        </div>
+      </userData.Provider>
+    </Provider>
   );
 };
 
@@ -49,6 +54,10 @@ export const appLayout = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/contact",

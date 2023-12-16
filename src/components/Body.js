@@ -67,7 +67,7 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body mt-4">
-      <div className="mb-4 px-28">
+      <div className="mb-4 w-[800] mx-auto">
         <input
           className="border-solid border-neutral-950 border-2 p-1"
           type="text"

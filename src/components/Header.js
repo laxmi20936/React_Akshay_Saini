@@ -2,6 +2,7 @@ import { LOGO } from "../utils/constants";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   // console.log("Header called");
@@ -10,7 +11,8 @@ const Header = () => {
 
   const onlineStatus = useOnline();
   // console.log("Header called2");
-
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems, "Head");
   const loginHandler = () => {
     //    if(login === "Login"){
     //       setLogin("Logout")
@@ -37,7 +39,12 @@ const Header = () => {
           <li className="m-4">
             <Link to="/contact">Contact</Link>
           </li>
-          <li className="m-4">Cart</li>
+          <li className="m-4">
+            <Link to="/cart"> Cart ({cartItems.length})</Link>
+          </li>
+          <li className="m-4">
+            <Link to="/theme">Theme</Link>
+          </li>
           {/* <button onClick={loginHandler}>{login}</button> */}
 
           {/* OR */}
