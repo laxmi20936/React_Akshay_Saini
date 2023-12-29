@@ -80,3 +80,8 @@ in a more convinent way.
 inside reducer: cant do console.log(state)
 cant do console.log(current(state))=> {current} from RTK.
 
+=================
+Before for fetching we used to do middleware and Redux Thunk for fetching data.
+Now we are using RTK query in Redux Toolkit.
+
+
